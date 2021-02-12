@@ -175,7 +175,7 @@ popUp.addEventListener("click", (e) => {
 //закрываем всплывающие окна  по нажатию description
 
 document.addEventListener("keydown", (e) => {
-  if (e.code === "Escape") {
+  if (e.code === "Escape" && popUp.style.display === "flex") {
     closeAll();
   }
 });
