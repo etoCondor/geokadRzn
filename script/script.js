@@ -63,18 +63,18 @@ for (let anchor of anchors) {
 // Всплывающие окна
 //-----------------------
 
-let popUp = document.querySelector(".popUp");
-let popUpContent = document.querySelector(".popUpContent");
-let contactsButton = document.querySelector(".contactsButton");
-let licenseButton = document.querySelector(".licenseButton");
-let priceButton = document.querySelector(".priceButton");
-let orderButton = document.querySelectorAll(".orderButton");
-let contacts = document.querySelector(".contacts");
-let license = document.querySelector(".license");
-let order = document.querySelector(".order");
-let price = document.querySelector(".price");
-let closeButton = document.querySelector(".close");
-let body = document.querySelector("body");
+let popUp = document.querySelector(".popUp"),
+  popUpContent = document.querySelector(".popUpContent"),
+  contactsButton = document.querySelector(".contactsButton"),
+  licenseButton = document.querySelector(".licenseButton"),
+  priceButton = document.querySelector(".priceButton"),
+  orderButton = document.querySelectorAll(".orderButton"),
+  contacts = document.querySelector(".contacts"),
+  license = document.querySelector(".license"),
+  order = document.querySelector(".order"),
+  price = document.querySelector(".price"),
+  closeButton = document.querySelector(".close"),
+  body = document.querySelector("body");
 
 //показываем всплывающее окно
 function openPop() {
@@ -97,41 +97,85 @@ function closeAll() {
 }
 
 //показываем контакты
-contactsButton.onclick = function () {
+
+// contactsButton.onclick = function () {
+//   openPop();
+//   contacts.style.display = "block";
+//   popUpContent.style.height = "100%"; //костыль
+// };
+
+contactsButton.addEventListener("click", () => {
   openPop();
   contacts.style.display = "block";
   popUpContent.style.height = "100%"; //костыль
-};
+});
 
 //показываем окно заказа
-for (let i = 0; i < orderButton.length; i++) {
-  orderButton[i].onclick = function () {
+
+// for (let i = 0; i < orderButton.length; i++) {
+//   orderButton[i].onclick = function () {
+//     openPop();
+//     order.style.display = "block";
+//     document.querySelector(".ajax-contact-form").reset();
+//   };
+// }
+
+orderButton.forEach((item, i) => {
+  orderButton[i].addEventListener("click", () => {
     openPop();
     order.style.display = "block";
     document.querySelector(".ajax-contact-form").reset();
-  };
-}
+  });
+});
 
 //показываем описание
-licenseButton.onclick = function () {
+
+// licenseButton.onclick = function () {
+//   openPop();
+//   license.style.display = "block";
+//   popUpContent.style.height = "100%"; //костыль
+// };
+
+licenseButton.addEventListener("click", () => {
   openPop();
   license.style.display = "block";
   popUpContent.style.height = "100%"; //костыль
-};
+});
 
 //показываем цены
-priceButton.onclick = function () {
+
+// priceButton.onclick = function () {
+//   openPop();
+//   price.style.display = "block";
+//   popUpContent.style.height = "100%"; //костыль
+// };
+
+priceButton.addEventListener("click", () => {
   openPop();
   price.style.display = "block";
   popUpContent.style.height = "100%"; //костыль
-};
+});
 
 //закрываем всплывающие окна по нажатию крестика
-closeButton.onclick = closeAll;
+closeButton.addEventListener("click", closeAll);
 
 //закрываем всплывающие окна  по клику вне блока
-window.onclick = function (e) {
-  if (e.target == popUp) {
+
+// window.onclick = function (e) {
+//   if (e.target == popUp) {
+//     closeAll();
+//   }
+// };
+popUp.addEventListener("click", (e) => {
+  if (e.target === popUp) {
     closeAll();
   }
-};
+});
+
+//закрываем всплывающие окна  по нажатию description
+
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Escape") {
+    closeAll();
+  }
+});
