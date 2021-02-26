@@ -98,12 +98,6 @@ function closeAll() {
 
 //показываем контакты
 
-// contactsButton.onclick = function () {
-//   openPop();
-//   contacts.style.display = "block";
-//   popUpContent.style.height = "100%"; //костыль
-// };
-
 contactsButton.addEventListener("click", () => {
   openPop();
   contacts.style.display = "block";
@@ -111,14 +105,6 @@ contactsButton.addEventListener("click", () => {
 });
 
 //показываем окно заказа
-
-// for (let i = 0; i < orderButton.length; i++) {
-//   orderButton[i].onclick = function () {
-//     openPop();
-//     order.style.display = "block";
-//     document.querySelector(".ajax-contact-form").reset();
-//   };
-// }
 
 orderButton.forEach((item, i) => {
   orderButton[i].addEventListener("click", () => {
@@ -130,12 +116,6 @@ orderButton.forEach((item, i) => {
 
 //показываем описание
 
-// licenseButton.onclick = function () {
-//   openPop();
-//   license.style.display = "block";
-//   popUpContent.style.height = "100%"; //костыль
-// };
-
 licenseButton.addEventListener("click", () => {
   openPop();
   license.style.display = "block";
@@ -143,12 +123,6 @@ licenseButton.addEventListener("click", () => {
 });
 
 //показываем цены
-
-// priceButton.onclick = function () {
-//   openPop();
-//   price.style.display = "block";
-//   popUpContent.style.height = "100%"; //костыль
-// };
 
 priceButton.addEventListener("click", () => {
   openPop();
@@ -161,11 +135,6 @@ closeButton.addEventListener("click", closeAll);
 
 //закрываем всплывающие окна  по клику вне блока
 
-// window.onclick = function (e) {
-//   if (e.target == popUp) {
-//     closeAll();
-//   }
-// };
 popUp.addEventListener("click", (e) => {
   if (e.target === popUp) {
     closeAll();
